@@ -5,8 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Simple._6x6.TicTacToe"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="6x6 TicTacToe - Nguyen Khanh Hoang" Height="560" Width="490"
+        Loaded="Window_Loaded" WindowStyle="ThreeDBorderWindow" ResizeMode="CanMinimize" Icon="example.png">
+    <Canvas Name="uiCanvas" Background="#FFF0F0F0">
+        <Menu>
+            <MenuItem Header="_Save" Click="SaveMenu_Click"/>
+            <MenuItem Header="_Load" Click="LoadMenu_Click"/>
+        </Menu>
+        <Button x:Name="btnReset" Content="Reset" Canvas.Left="398" Canvas.Top="23" Width="50" Click="BtnReset_Click" BorderBrush="Black"/>
+        <Label x:Name="labelStatus" Content="" Canvas.Left="10" Canvas.Top="20" BorderBrush="Black"/>
+    </Canvas>
 </Window>
