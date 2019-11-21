@@ -104,6 +104,7 @@ namespace Simple._6x6.TicTacToe
                     Canvas.SetLeft(button, LeftOffset + j * (ButtonWidth + Padding));
                     Canvas.SetTop(button, TopOffset + i * (ButtonHeight + Padding));
                 }
+                
             }
         }
 
@@ -111,20 +112,21 @@ namespace Simple._6x6.TicTacToe
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
-            
-            if (isXTurn)
+            var (i, j) = button.Tag as Tuple<int, int>;
+
+            if (_a[i,j] == 0 && isXTurn)
             {
-                button.Foreground = Brushes.Blue;
+                
                 labelStatus.Foreground = Brushes.Red;
                 labelStatus.Content = "O Turn";
             }
             else
             {
-                button.Foreground = Brushes.Red;
+                
                 labelStatus.Foreground = Brushes.Blue;
                 labelStatus.Content = "X Turn";
             }
-            var (i, j) = button.Tag as Tuple<int, int>;
+            
 
             //MessageBox.Show($"Click on button #{i} - {j}");
 
@@ -134,6 +136,7 @@ namespace Simple._6x6.TicTacToe
                 
                 if (isXTurn)
                 {
+                    button.Foreground = Brushes.Blue;
                     button.Content = "X"; // UI
 
                     _a[i, j] = 1; // Model / Entity / Data transfer
@@ -141,6 +144,7 @@ namespace Simple._6x6.TicTacToe
                 }
                 else
                 {
+                    button.Foreground = Brushes.Red;
                     button.Content = "O"; // UI
                     _a[i, j] = 2;
                 }
@@ -343,6 +347,7 @@ namespace Simple._6x6.TicTacToe
         private void BtnReset_Click(object sender, RoutedEventArgs e)
         {
             isXTurn = true;
+            countUsedSquared = 0;
             for (int i = 0; i < Rows; i++)
             {
                 for (int j = 0; j < Cols; j++)
